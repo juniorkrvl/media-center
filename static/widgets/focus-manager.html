@@ -1,0 +1,150 @@
+<dom-module id="focus-manager">
+    <template>
+            <style>
+                :host{
+                    height:100%;
+                    width:100%;
+                }
+            </style>
+        <content></content>
+    </template>
+    <script>
+        Polymer({
+            is: 'focus-manager',
+            properties:{
+                focusGroups:{
+                    type:Array,
+                    value: function(){
+                        return [];
+                    }
+                },
+                focusedGroup:{
+                    type:Object,
+                    value:function(){
+                        return {};
+                    }
+                },
+                focusItems:{
+                    type:Array,
+                    value:function(){
+                        return [];
+                    }
+                },
+                focusedItem:{
+                    type:Object,
+                    value:function(){
+                        return [];
+                    }
+                },
+                keyEventTarget: {
+                    type: Object,
+                    value: function() {
+                    return document.body;
+                    }
+                }
+            },
+            behaviors:[Polymer.IronA11yKeysBehavior],
+            keyBindings:{
+                'right':'_onRight',
+                'left':'_onLeft',
+                'up':'_onUp',
+                'down':'_onDown'
+            },
+
+            attached:function(){
+                this.focusGroups = this._getChilds(this,'group');
+                if(this.focusGroups.length > 0){
+                    this.focusedGroup = this.focusGroups[0];
+                    this.focusItems = this._getChilds(this.focusedGroup,'item'); 
+                    if(this.focusItems.length > 0){
+                        this.focusedItem = this.focusItems[0];
+                        this.focusedItem.setAttribute('focused','true');
+                        //Polymer.dom(this.focusedItem).toggleAttribute('focused', true);
+                    }
+                }
+            },
+
+            _focusToId: function(id){
+                var el = Polymer.dom(this).querySelectorAll('#'+id);
+                if(el!=null && el.length > 0 && el[0].focusRole == 'group'){
+                    this._focusGroup(el[0]);
+                }
+            },
+            _onRight: function(){
+                if(this.focusedGroup._onRight){
+                    this.focusedGroup._onRight(this);
+                }
+                else{
+                    if(this.focusedGroup.rightSide != ''){
+                        this._focusToId(this.focusedGroup.rightSide);
+                    }
+                    else{
+                        console.log('Right key not implemented');
+                    }
+                }
+            },
+            _onLeft: function(){
+                if(this.focusedGroup._onLeft){
+                    this.focusedGroup._onLeft(this);
+                }
+                else{
+                    if(this.focusedGroup.leftSide != ''){
+                        this._focusToId(this.focusedGroup.leftSide);
+                    }
+                    else{
+                        console.log('Left key not implemented');
+                    }
+                }
+            },
+            _onUp: function(){
+                if(this.focusedGroup._onUp){
+                    this.focusedGroup._onUp(this);
+                }
+                else{
+                    if(this.focusedGroup.upSide != ''){
+                        this._focusToId(this.focusedGroup.upSide);
+                    }
+                    else{
+                        console.log('Up key not implemented');
+                    }
+                }
+            },
+            _onDown: function(){
+                if(this.focusedGroup._onDown){
+                    this.focusedGroup._onDown(this);
+                }
+                else{
+                    if(this.focusedGroup.downSide != ''){
+                        this._focusToId(this.focusedGroup.downSide);
+                    }
+                    else{
+                        console.log('Down key not implemented');
+                    }
+                }
+            },
+
+            _focusItem:function(item){
+                this.focusedItem.removeAttribute('focused');
+                this.focusedItem = item;
+                this.focusedItem.setAttribute('focused',true);
+            },
+
+            _focusGroup: function(group){
+                this.focusedGroup = group;
+                this.focusItems = this._getChilds(group,'item');
+                if(this.focusItems.length > 0){
+                    this._focusItem(this.focusItems[0]);
+                }
+            },
+
+            _getChilds: function(element,role){
+                //var childs = element.queryAllEffectiveChildren('[focus-role="'+ role +'"]');
+                var childs = element.querySelectorAll('[focus-role="'+ role +'"]');
+                //var childs = Polymer.dom(element).querySelectorAll('[focus-role="'+ role +'"]');
+                //var childs = Polymer.dom(element).querySelectorAll('[focus-role="'+ role +'"]');
+                return childs;
+            }
+
+        });
+    </script>
+</dom-module>

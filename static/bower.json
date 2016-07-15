@@ -1,0 +1,22 @@
+{
+  "name": "Polymer Media Center",
+  "authors": [
+    "Junior Carvalho <junior@btfit.com.br>"
+  ],
+  "description": "A polymer-based media center",
+  "main": "app.py",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "iron-a11y-keys-behavior": "PolymerElements/iron-a11y-keys-behavior#^1.1.6",
+    "iron-behaviors": "PolymerElements/iron-behaviors#^1.0.16",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.3.1"
+  }
+}

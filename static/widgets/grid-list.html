@@ -1,0 +1,51 @@
+<dom-module id="grid-list">
+    <template>
+        <style>
+            :host{
+                @apply(--layout-vertical);
+            }
+        </style>
+        <div id="container">
+        </div>
+        <content></content>
+    </template>
+    <script>
+        Polymer({
+            is: 'grid-list',
+            properties:{
+                columns:Number
+            },
+            behaviors:[
+                MCBehaviors.NavigableBehavior
+            ],
+            
+            ready:function(){
+                this.focusRole = 'group';
+                this.focusType = 'grid';
+
+                var children = this.queryAllEffectiveChildren('[focus-role="item"]');
+                for(c in children){
+                    Polymer.dom(this).removeChild(children[c]);
+                }
+
+                var item = 0;
+                var row = document.createElement('grid-row');
+
+                for(c in children){
+                    if(item<this.columns){
+                        Polymer.dom(row).appendChild(children[c]);
+                        item+=1;
+                    }
+                    else{
+                        Polymer.dom(this.$.container).appendChild(row);
+                        row = document.createElement('grid-row');
+                        Polymer.dom(row).appendChild(children[c]);
+                        item = 0;
+                    }
+                }
+
+            }
+
+        });
+    </script>
+</dom-module>

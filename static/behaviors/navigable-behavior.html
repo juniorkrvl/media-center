@@ -1,0 +1,38 @@
+<script>
+    var MCBehaviors = MCBehaviors || {};
+    MCBehaviors.NavigableBehavior = {
+        properties:{
+            focusType:{
+                type:String,
+                value:'hor', //must be: hor, ver, grid or none
+                reflectToAttribute:true
+            },
+            focusRole:{
+                type:String,
+                value:'group', //must be: group or item
+                reflectToAttribute:true
+            },
+            upSide:String, //The id of up-side element
+            rightSide:String,
+            downSide:String,
+            leftSide:String,
+            loop:{
+                type:String,
+                value:'none' //can be 'left right up down' (you can choose the sides ie:'left down' for left and down loops only) separated by spaces or only 'all'
+            }
+        },
+
+        ready: function(){
+            if(this.focusType == undefined){
+                this.focusType = 'hor';
+            }
+            if(this.focusRole == undefined){
+                this.focusRole = 'group';
+            }
+            if(this.loop == undefined){
+                this.loop = 'all';
+            }
+        }
+
+    }; 
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Media Center</title>
+    <script src="{{url_for('static',filename='bower_components/webcomponentsjs/webcomponents-lite.js')}}"></script>
+    <link rel="import" href="{{url_for('static',filename='elements.html')}}" >
+    <style is="custom-style" include="iron-flex iron-positioning">
+
+        h-list>div{
+            padding:20px;
+        }
+        h-list>div[focused]{
+            color:#FFF;
+        }
+
+        v-list>div{
+            padding:20px;
+        }
+        v-list>div[focused]{
+            color:#FFF;
+        }
+        v-list{
+            height:100%;
+        }
+    </style>
+</head>
+<body class="layout vertical fullbleed unresolved">
+    <focus-manager class="layout vertical">
+        <grid-list columns="2">
+            <div focus-role="item">1</div>
+            <div focus-role="item">2</div>
+            <div focus-role="item">3</div>
+            <div focus-role="item">4</div>
+            <div focus-role="item">5</div>
+            <div focus-role="item">6</div>
+        </grid-list>
+    </focus-manager>
+</body>
+</html>
