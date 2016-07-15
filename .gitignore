@@ -82,6 +82,9 @@ celerybeat-schedule
 venv/
 ENV/
 
+# bower
+static/bower_components/*
+
 # Spyder project settings
 .spyderproject
 
