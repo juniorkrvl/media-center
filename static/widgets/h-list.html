@@ -1,19 +1,26 @@
 
 <dom-module id="h-list">
+    <style>
+        :host{
+            @apply(--layout-horizontal);
+            @apply(--layout-center-justified);
+            height: 230px;
+            padding:10px;
+            font-size: 20px;
+            font-family: Arial;
+            background-color:#BFCAC4;
+            color:#6C7A80;
+        }
+
+        :host ::content div {
+            height:20px;
+            padding: 10px 10px 10px 10px;
+            margin-bottom:10px;
+        }
+
+    </style>
     <template>
-        <style>
-            :host{
-                @apply(--layout-horizontal);
-                @apply(--layout-center-justified);
-                height: auto;
-                padding:10px;
-                font-size: 20px;
-                font-family: Arial;
-                background-color:#BFCAC4;
-                color:#6C7A80;
-            }
-        </style>
-        <content></content>
+        <content></content>    
     </template>
     <script>
         Polymer({
