@@ -27,14 +27,38 @@
 </head>
 <body class="layout vertical fullbleed unresolved">
     <focus-manager class="layout vertical">
-        <grid-list columns="2">
+        <h-list id="list" loop="all" down-side="grid">
             <div focus-role="item">1</div>
             <div focus-role="item">2</div>
             <div focus-role="item">3</div>
-            <div focus-role="item">4</div>
-            <div focus-role="item">5</div>
-            <div focus-role="item">6</div>
+        </h-list>
+        <br>
+        <grid-list id="grid" down-side="bottom" up-side="list" columns="8" class="flex">
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
+            <div focus-role="item"><img src="http://netdna.webdesignerdepot.com/uploads/2011/02/jurassicpark.jpg" alt="Jurassic Park"></div>
         </grid-list>
+        <br>
+        <h-list id="bottom" loop="all" down-side="grid" up-side="list">
+            <div focus-role="item">1</div>
+            <div focus-role="item">2</div>
+            <div focus-role="item">3</div>
+        </h-list>
     </focus-manager>
 </body>
 </html>

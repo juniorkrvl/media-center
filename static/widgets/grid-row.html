@@ -3,13 +3,75 @@
         <style>
             :host{
                 @apply(--layout-horizontal);
+                padding-bottom:10px;
             }
+
+            :host ::content > *{
+                padding:10px;
+                margin:10px;
+                text-align:center;
+                height:150px;
+            }
+
+            :host ::content > div > img{
+                transition: all .1s ease-in-out;
+                width:99px;
+                height:150px;
+            }
+
+            :host ::content > div[focused] > img{
+                transform: scale(1.1);
+            }
+
+            /*
+            :host ::content div img{
+                transition: all .1s ease-in-out;
+                width:99px;
+                height:150px;
+            }
+
+            :host ::content div[focused]{
+                /*background:#B7B7B7;
+                transform: scale(1.1);
+            }
+
+            :host ::content div[focused] > img{
+                transform: scale(1.1);
+                border: solid 3px #0099ff;
+            }*/
+
         </style>
         <content></content>
     </template>
     <script>
         Polymer({
-            is: 'grid-row'
+            is: 'grid-row',
+            behaviors:[
+                MCBehaviors.HorizontalBehavior
+            ],
+            _onDown:function(manager){
+                var id = this.parentElement.downSide;
+                var el = manager.focusedItem.parentElement;
+                var down = el.nextElementSibling;
+                if(down){
+                    manager._focusGroup(down,manager.focusedItemIndex,id);
+                }
+                else{
+                    manager._focusToId(id);
+                }
+            },
+            _onUp:function(manager){
+                var id = this.parentElement.upSide;
+                var el = manager.focusedItem.parentElement;
+                var up = el.previousElementSibling;
+                if(up){
+                    manager._focusGroup(up,manager.focusedItemIndex,id);
+                }
+                else{
+                    manager._focusToId(id);
+                }
+            },
+
         });
     </script>
 </dom-module>

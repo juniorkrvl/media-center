@@ -2,11 +2,6 @@
     var MCBehaviors = MCBehaviors || {};
     MCBehaviors.NavigableBehavior = {
         properties:{
-            focusType:{
-                type:String,
-                value:'hor', //must be: hor, ver, grid or none
-                reflectToAttribute:true
-            },
             focusRole:{
                 type:String,
                 value:'group', //must be: group or item
@@ -23,9 +18,6 @@
         },
 
         ready: function(){
-            if(this.focusType == undefined){
-                this.focusType = 'hor';
-            }
             if(this.focusRole == undefined){
                 this.focusRole = 'group';
             }

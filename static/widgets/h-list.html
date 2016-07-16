@@ -19,69 +19,8 @@
         Polymer({
             is: 'h-list',
             behaviors:[
-                MCBehaviors.NavigableBehavior
-            ],
-            
-            ready:function(){
-                this.focusRole = 'group';
-                this.focusType = 'hor';
-            },
-
-            _onRight:function(manager){
-                if(manager.focusedItem != undefined){
-                    var next = manager.focusedItem;
-                    var hasAtt = false;
-
-                    while(next != null && hasAtt==false){
-                        next = next.nextElementSibling;
-
-                        if(next == null){
-                            if(this.loop.indexOf('right') > -1 || this.loop.indexOf('all') > -1){
-                                manager._focusItem(manager.focusItems[0]);
-                            }
-                            else if(manager.focusedGroup.rightSide != ''){
-                                manager._focusToId(manager.focusedGroup.rightSide);
-                            }
-                        } 
-                        else{
-                            hasAtt = next.hasAttribute('focus-role','item');
-                        }
-                    }
-
-                    if(hasAtt){
-                        manager._focusItem(next);
-                    }
-                }
-            },
-
-            _onLeft: function(manager){
-                
-                if(manager.focusedItem != undefined){
-                    var prev = manager.focusedItem;
-                    var hasAtt = false;
-
-                    while(prev != null && hasAtt==false){
-                        prev = prev.previousElementSibling;
-
-                        if(prev == null){
-                            if(this.loop.indexOf('left') > -1 || this.loop.indexOf('all') > -1){
-                                manager._focusItem(manager.focusItems[manager.focusItems.length-1]);
-                            }
-                            else if(manager.focusedGroup.leftSide != ''){
-                                manager._focusToId(manager.focusedGroup.leftSide);
-                            }
-                        } 
-                        else{
-                            hasAtt = prev.hasAttribute('focus-role','item');
-                        }
-                    }
-
-                    if(hasAtt){
-                        manager._focusItem(prev);
-                    }
-                }
-            }
-
+                MCBehaviors.HorizontalBehavior
+            ]
         });
     </script>
 </dom-module>

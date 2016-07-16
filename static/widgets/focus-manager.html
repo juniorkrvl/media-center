@@ -36,6 +36,10 @@
                         return [];
                     }
                 },
+                focusedItemIndex:{
+                    type:Number,
+                    value:0
+                },
                 keyEventTarget: {
                     type: Object,
                     value: function() {
@@ -127,13 +131,17 @@
                 this.focusedItem.removeAttribute('focused');
                 this.focusedItem = item;
                 this.focusedItem.setAttribute('focused',true);
+                this.focusedItemIndex = Array.prototype.indexOf.call(this.focusItems, this.focusedItem);                
             },
 
-            _focusGroup: function(group){
+            _focusGroup: function(group,idx=0,id=''){
                 this.focusedGroup = group;
                 this.focusItems = this._getChilds(group,'item');
-                if(this.focusItems.length > 0){
-                    this._focusItem(this.focusItems[0]);
+                if(this.focusItems.length > 0 && this.focusItems[idx]){
+                    this._focusItem(this.focusItems[idx]);
+                }
+                else{
+                    this._focusToId(id);
                 }
             },
 
