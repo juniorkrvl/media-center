@@ -1,27 +1,26 @@
 <dom-module id="focus-manager">
+    <style>
+        :host{
+            height:100%;
+            width:100%;
+        }
+
+        :host ::content > ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        :host ::content > ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
+            border-radius: 10px;
+        }
+        
+        :host ::content > ::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: #91c32b; 
+            -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
+        }
+    </style>
     <template>
-            <style>
-                :host{
-                    height:100%;
-                    width:100%;
-                }
-
-                :host ::content > ::-webkit-scrollbar {
-                    width: 6px;
-                }
-                
-                :host ::content > ::-webkit-scrollbar-track {
-                    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); 
-                    border-radius: 10px;
-                }
-                
-                :host ::content > ::-webkit-scrollbar-thumb {
-                    border-radius: 10px;
-                    background: #91c32b; 
-                    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
-                }
-
-            </style>
         <content></content>
     </template>
     <script>

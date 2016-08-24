@@ -57,32 +57,50 @@
 
                 var item = 0;
                 var row;
+                var rest = 0;
+                var rows = 0;
 
                 for(c in children){
                     
+                    //If is first item, create a line
                     if(item==0){
                         row = document.createElement('grid-row');
+                        rows += 1;
                         Polymer.dom(this).appendChild(row);
                     }
                     
                     if(item<this.columns){
                         Polymer.dom(row).appendChild(children[c]);
-                        item+=1;
-
-                        if(item==this.columns){
+                        if(item==this.columns-1){
                             item=0;
                         }
-                    }
-
-                    if(item < this.columns &&  c == children.length-1){
-                        while(item < this.columns){
-                            var fill = document.createElement('div');
-                            fill.classList.add('fill');
-                            Polymer.dom(row).appendChild(fill);
-                            item+=1
-                            console.log('+1');
+                        else{
+                            item+=1;
                         }
                     }
+
+                    if(c==children.length-1){
+                        rest = (this.columns*rows) - children.length;
+                    }
+
+                    //if(item < this.columns-1 && c > this.columns-1 ){
+                    //    while(item < this.columns){
+                    //        var fill = document.createElement('div');
+                    //        fill.classList.add('fill');
+                    //        Polymer.dom(row).appendChild(fill);
+                    //        item+=1
+                    //        console.log('+1');
+                    //    }
+                    //}
+
+                }
+
+                while(rest > 0){
+                    var fill = document.createElement('div');
+                    fill.classList.add('fill');
+                    Polymer.dom(row).appendChild(fill);
+                    console.log('+1');
+                    rest-=1;
                 }
 
                 Polymer.updateStyles();

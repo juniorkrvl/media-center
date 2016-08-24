@@ -1,0 +1,34 @@
+<dom-module id="view-grid">
+    <style include="iron-flex iron-positioning">
+        :host{
+            @apply(--layout-vertical);
+            @apply(--layout-flex);
+        }
+    </style>
+    <template>
+        <focus-manager class="layout vertical flex">
+            <grid-list id="grid" loop="all" up-side="list" columns="7" class="flex">
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>    
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>    
+                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>        
+            </grid-list>
+        </focus-manager>
+    </template>
+    <script>
+        Polymer({
+            is: 'view-grid'
+        });
+    </script>
+</dom-module>
