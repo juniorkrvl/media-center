@@ -7,28 +7,40 @@
     </style>
     <template>
         <focus-manager class="layout vertical flex">
-            <grid-list id="grid" loop="all" up-side="list" columns="7" class="flex">
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>    
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>    
-                <div focus-role="item"><img src="../images/zoo.jpg" alt="Zoo"></div>        
+            <grid-list id="grid" loop="all" columns="{{columns}}" class="flex">
+                <template is="dom-repeat" items={{items}}>
+                    <div focus-role="item">
+                        <img src="{{item.image}}" alt="{{item.alt}}" on-tap="goTo">
+                    </div>
+                </template>                    
             </grid-list>
         </focus-manager>
     </template>
     <script>
         Polymer({
-            is: 'view-grid'
+            is: 'view-grid',
+            properties:{
+                items:{ // Items must have a title (alt) and a src image and a action in URI format
+                    type:Array,
+                    value: function(){
+                        return [];
+                    }
+                },
+                columns: {
+                    type:Number,
+                    value: 7
+                }
+            },
+
+            ready: function(){
+                this.$.grid.ready();
+            },
+
+            goTo: function(){
+                console.log('On Tap');
+            }
+
+
         });
     </script>
 </dom-module>
